@@ -1,21 +1,21 @@
 task :ingest => :environment do
 	require 'open-uri'
 	require 'json'
-	url = ('http://www.seismi.org/api/eqs/?limit=20')
+	url = ('http://earthquake.usgs.gov/earthquakes/feed/v0.1/summary/all_hour.geojson')
 	open url do |f|
 		json = f.read
 		parsed = JSON.parse(json)
-		@ingest = parsed['earthquakes']
+		@ingest = parsed['features']
 	end
 
 	@ingest.each do |quake|
-		time   = quake['timedate'] + ' UTC'
-		lat    = quake['lat'].to_f
-		long   = quake['lon'].to_f
-		mag    = quake['magnitude'].to_f
-		depth  = quake['depth'].to_f
-		region = quake['region']
-		item = Quake.new(:time => Time.parse(time), :latitude => lat, :longitude => long, :magnitude => mag, :depth => depth, :region => region)
+		time   = quake['properties']['time'].to_i/1000
+		lat    = quake['geometry']['coordinates'][0].to_f
+		long   = quake['geometry']['coordinates'][1].to_f
+		mag    = quake['properties']['mag'].to_f
+		depth  = quake['geometry']['coordinates'][2].to_f
+		region = quake['properties']['place']
+		item = Quake.new(:time => Time.at(time), :latitude => lat, :longitude => long, :magnitude => mag, :depth => depth, :region => region)
 		item.save
 	end
 end
