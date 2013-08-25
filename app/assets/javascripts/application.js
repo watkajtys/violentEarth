@@ -16,6 +16,9 @@
 //= require angular
 //= require angular-resource
 //= require angular-route
+//= require angular-animate
+//= require highcharts
+//= require highcharts-ng
 
 //= require ./app/initialize
 //= require_tree ./app/services
