@@ -1,2 +1,16 @@
-%h1 This is Home
-{{1+2}}
+.total
+	%h1 {{magnitudes.total_count}} EarthQuakes Today
+
+%highchart{:id => "chart1", :config => "chartConfig"}
+
+.magnitude
+	%button{:'ng-click' => 'loadMagnitudes()'}load
+	%h1 {{magnitudes.total_count}}
+	%h1 {{magnitudes.mag1_count}}
+
+.quake{:'ng-repeat' => "quake in quakes"}
+	%h4 {{quake.time | date:'medium'}}
+	%h1 {{quake.magnitude}} Magnitude Earthquake 
+	%h2 Location: {{quake.region}}
+	%hr
+	
