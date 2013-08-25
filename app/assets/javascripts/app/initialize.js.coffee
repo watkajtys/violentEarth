@@ -1,4 +1,4 @@
-@quake = angular.module('quake', ['ngRoute', 'ngResource', 'ngAnimate'])
+@quake = angular.module('quake', ['ngRoute', 'ngResource', 'ngAnimate', 'highcharts-ng'])
 
 
 @quake.config(($routeProvider, $locationProvider) ->
