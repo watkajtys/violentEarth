@@ -59,9 +59,5 @@ class Quake
 			self.category = 10
 		end
 	end
-
-	def today?
-		self.time > 24.hours.ago
-	end
 				
 end
