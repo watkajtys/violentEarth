@@ -1,5 +1,12 @@
 ViolentEarth::Application.routes.draw do
 
+  namespace :api do
+    namespace :v1 do
+      resources :quakes
+      resources :magnitudes
+    end
+  end
+
   match '*anything' => "static#start"
   root :to => "static#start"
   # The priority is based upon order of creation:
