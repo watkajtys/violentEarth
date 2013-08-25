@@ -7,6 +7,7 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mongoid'
+gem 'rabl-rails'
 gem 'bson_ext'
 gem "font-awesome-rails"
 gem 'kaminari'
