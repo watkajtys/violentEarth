@@ -1,7 +1,15 @@
-.total
-	%h1 {{magnitudes.total_count}} EarthQuakes Today
+.header
+	%button{:'ng-click' => "loadTimeSpan('hour')"} HOUR 
+	%button{:'ng-click' => "loadTimeSpan('day')"} DAY
+	%button{:'ng-click' => "loadTimeSpan('week')"} WEEK
+	%button{:'ng-click' => "loadTimeSpan('month')"} MONTH
 
-%highchart{:id => "chart1", :config => "chartConfig"}
+	{{selectedMagnitudes.mag0}}
+
+.total
+	%h1 {{selectedMagnitudes.total | number}} EarthQuakes in the past {{timespan}}.
+
+%highchart{:id => "chart1", :config => "chartConfig", :height => 500}
 
 .magnitude
 	%button{:'ng-click' => 'loadMagnitudes()'}load
@@ -10,7 +18,7 @@
 
 .quake{:'ng-repeat' => "quake in quakes"}
 	%h4 {{quake.time | date:'medium'}}
-	%h1 {{quake.magnitude}} Magnitude Earthquake 
+	%h1 {{quake.magnitude}}
 	%h2 Location: {{quake.region}}
 	%hr
 	
