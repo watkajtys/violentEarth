@@ -13,17 +13,15 @@
 	$scope.loadTimeSpan = (timespan) ->
 		$scope.timespan = timespan
 		$scope.selectedMagnitudes = $scope.magnitudes[timespan]
-		keys = Object.keys($scope.selectedMagnitudes)
-		console.log 'keys', keys
-		values = keys.map (v) ->
-  			$scope.selectedMagnitudes[v]
-  		console.log values
-  		values = values.map (val, i) ->
-  			(if val is 0 then null else val)
-  		console.log values
-  		values.shift()
-  		console.log $scope.selectedMagnitudes
-		$scope.chartConfig.series[0].data = values
+		mag = $scope.selectedMagnitudes
+		array = []
+		for cat of $scope.selectedMagnitudes
+  			array.push [cat, mag[cat]]
+  		array.shift()
+  		console.log array
+  		for k,v of array
+  			v[0] = v[0].replace(/_/, ' ')
+		$scope.chartConfig.series[0].data = array
 		$scope.chartConfig.loading = false
 
 	$scope.quakes = Quake.query()
@@ -38,25 +36,10 @@
              	chart: {
                  	type: 'pie',
                  	renderTo: 'container'
+                 	marginBottom: 80
                },
                credits: {
                	enabled: false
-               },
-               xAxis: {
-               	minRange: 1,
-               	categories: [
-                    'Cat0',
-                    'cat1',
-                    'cat2',
-                    'cat3',
-                    'cat4',
-                    'cat5',
-                    'cat6',
-                    'cat7',
-                    'cat8',
-                    'cat9',
-                    'cat10'
-                	]	               
                },
                plotOptions: {
                	pie: {
@@ -74,6 +57,8 @@
             },
             # //Series object - a list of series using normal highcharts series options.
             series: [
+            	type: 'pie',
+            	name: 'Number of Quakes'
             	data: []
             ]
             # //Title configuration
