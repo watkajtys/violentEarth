@@ -26,16 +26,78 @@
   			i--
 		$scope.chartConfig.series[0].data = array
 		$scope.chartConfig2.series[0].data = array
+		console.log
 		$scope.chartConfig.loading = false
+		$scope.chartConfig2.loading = false
 
 	$scope.quakes = Quake.query()
 	console.log $scope.quakes
 	$scope.recents = Recent.query()
 	console.log $scope.quakes
 
+	# $scope.tdmChartConfig = {
+	# 	options: {
+	# 		chart: {
+	# 			type: 'area'
+	# 			renderTo: 'container'
+	# 		},
+	# 		credits: {
+	# 			enabled: false
+	# 		},
+	# 		xAxis: {
+	# 			type: 'datetime',
+	# 		},
+	# 		yAxis:[{
+	# 			max: 10,
+	# 			minTickInterval: 1,
+	# 			maxTickInterval: 2,
+	# 			labels: {
+	# 				style: {
+	# 					color: '#89A54E'
+	# 				}
+	# 			},
+	# 			title: {
+	# 				text: 'Magnitude',
+	# 				style: {
+	# 					color: '#89A54E'
+	# 				}
+	# 			},
+	# 		}, {
+	# 			labels: {
+	# 				style: {
+	# 					color: '#89A54E'
+	# 				}
+	# 			},
+	# 			title: {
+	# 				text: 'Depth'
+	# 			}
+	# 			style: {
+	# 				color: '#4572A7'
+	# 			}
+	# 			opposite: true
+	# 		}]
+	# 		plotOptions: {
+ #            series: {
+ #               stacking: 'normal',
+ #            }
+ #         },
+	# 	},
+	# 	series: [{
+	# 		type: 'column',
+	# 		name: 'Magnitude',
+	# 		data: [1.5, 5.0, 6.8, 3.5]
+	# 	}, {
+	# 		type: 'column',
+	# 		name: 'Depth',
+	# 		data: [-119, -40.2, -155.3, -27]
+	# 	}],
+	# 	loading: false
+	# }
+
 
 	$scope.chartConfig2 = {
 		options: {
+			colors: ['#2f7ed8', '#0d233a', '#8bbc21', '#910000', '#1aadce', '#492970','#f28f43', '#77a1e5', '#c42525', '#a6c96a'],
 			chart: {
 				type: 'column'
 				renderTo: 'container'
@@ -43,60 +105,73 @@
 			credits: {
 				enabled: false
 			},
+			plotOptions: {
+				column: {
+					showInLegend: false,
+					colorByPoint: true
+				}
+			},
 			xAxis: {
 				categories: []
 			}
-
+			yAxis: {
+            type: 'logarithmic',
+            title: {text: 'Number of Events'},
+         },
 		},
 		series: [
+			name: 'Number of Quakes',
 			data: []
 		],
-		loading: false
+		loading: true
 	}
 
 
 	$scope.chartConfig = {
-            # //Main Highcharts options. Any Highchart options are valid here.
-            # //will be ovverriden by values specified below.
-            options: {
-             	chart: {
-                 	type: 'pie',
-                 	renderTo: 'container'
-                 	marginBottom: 80
-               },
-               credits: {
-               	enabled: false
-               },
-               plotOptions: {
-               	pie: {
-               		allowPointSelect: true,
-               		cursor: 'pointer'
-               		dataLabels: {
-               			enabled: true
-               		},
-               		showInLegend: false
-               	}
-               }
-               yAxis: {
-               	title: {text: 'Number of Events'}
-               }
-            },
-            # //Series object - a list of series using normal highcharts series options.
-            series: [
-            	type: 'pie',
-            	name: 'Number of Quakes'
-            	data: []
-            ]
-            # //Title configuration
-            title: {
-               text: 'Earthquakes Magnitudes'
-            },
-
-             # //Boolean to control showng loading status on chart
-            loading: true,
-            # //Configuration for the xAxis. Currently only one x axis can be dynamically controlled.
-            # //properties currentMin and currentMax provied 2-way binding to the chart's maximimum and minimum
+      # //Main Highcharts options. Any Highchart options are valid here.
+      # //will be ovverriden by values specified below.
+      colors: ['#2f7ed8', '#0d233a', '#8bbc21', '#910000', '#1aadce', '#492970','#f28f43', '#77a1e5', '#c42525', '#a6c96'],
+      options: {
+       	chart: {
+           	type: 'pie',
+           	colors: ['#4E8DB8', '#205C85', '#46DEC8', '#ED6B53', '#B83937', '#64E572', '#FF9655', '#FFF263', '#6AF9C4'],
+           	renderTo: 'container'
+           	marginBottom: 80
+         },
+         credits: {
+         	enabled: false
+         },
+         plotOptions: {
+         	pie: {
+         		allowPointSelect: true,
+         		cursor: 'pointer'
+         		dataLabels: {
+         			enabled: false
+         		},
+         		showInLegend: true
+         	}
          }
+         yAxis: {
+         	title: {text: 'Number of Events'}
+         }
+      },
+      # //Series object - a list of series using normal highcharts series options.
+      series: [
+      	type: 'pie',
+      	name: 'Number of Quakes'
+      	data: [
+      	]
+      ]
+      # //Title configuration
+      title: {
+         text: 'Earthquakes Magnitudes'
+      },
+
+       # //Boolean to control showng loading status on chart
+      loading: true,
+      # //Configuration for the xAxis. Currently only one x axis can be dynamically controlled.
+      # //properties currentMin and currentMax provied 2-way binding to the chart's maximimum and minimum
+   }
 
 
 	$scope.loadMagnitudes()
