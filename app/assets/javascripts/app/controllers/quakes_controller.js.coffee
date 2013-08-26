@@ -18,16 +18,40 @@
 		for cat of $scope.selectedMagnitudes
   			array.push [cat, mag[cat]]
   		array.shift()
-  		console.log array
   		for k,v of array
   			v[0] = v[0].replace(/_/, ' ')
+  		i = array.length - 1
+		while i >= 0
+  			array.splice i, 1  if array[i][1] is 0
+  			i--
 		$scope.chartConfig.series[0].data = array
+		$scope.chartConfig2.series[0].data = array
 		$scope.chartConfig.loading = false
 
 	$scope.quakes = Quake.query()
 	console.log $scope.quakes
 
-	$scope.pieConfig = {}
+
+	$scope.chartConfig2 = {
+		options: {
+			chart: {
+				type: 'column'
+				renderTo: 'container'
+			},
+			credits: {
+				enabled: false
+			},
+			xAxis: {
+				categories: []
+			}
+
+		},
+		series: [
+			data: []
+		],
+		loading: false
+	}
+
 
 	$scope.chartConfig = {
             # //Main Highcharts options. Any Highchart options are valid here.
@@ -46,9 +70,9 @@
                		allowPointSelect: true,
                		cursor: 'pointer'
                		dataLabels: {
-               			enabled: false
+               			enabled: true
                		},
-               		showInLegend: true
+               		showInLegend: false
                	}
                }
                yAxis: {
