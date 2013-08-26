@@ -4,6 +4,7 @@ ViolentEarth::Application.routes.draw do
     namespace :v1 do
       resources :quakes
       resources :magnitudes
+      resources :recents
     end
   end
 
