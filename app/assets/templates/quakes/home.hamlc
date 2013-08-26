@@ -18,9 +18,9 @@
 	%h1 {{magnitudes.total_count}}
 	%h1 {{magnitudes.mag1_count}}
 
-.quake{:'ng-repeat' => "quake in quakes"}
-	%h4 {{quake.time | date:'medium'}}
-	%h1 {{quake.magnitude}}
-	%h2 Location: {{quake.region}}
+.quake{:'ng-repeat' => "recent in recents"}
+	%h4 {{recent.time | date:'medium'}}
+	%h1 {{recent.magnitude}}
+	%h2 Location: {{recent.region}}
 	%hr
 	
