@@ -9,7 +9,9 @@
 .total
 	%h1 {{selectedMagnitudes.total | number}} EarthQuakes in the past {{timespan}}.
 
-%highchart{:id => "chart1", :config => "chartConfig", :height => 500}
+%highchart{:id => "chart1", :config => "chartConfig"}
+%highchart{:id => "chart2", :config => "chartConfig2"}
+
 
 .magnitude
 	%button{:'ng-click' => 'loadMagnitudes()'}load
