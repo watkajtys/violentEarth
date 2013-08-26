@@ -1,4 +1,4 @@
-@quake.controller "QuakesController", ($scope, Quake, $http) ->
+@quake.controller "QuakesController", ($scope, Quake, Recent, $http) ->
 
 	$scope.timespan = 'hour'
 
@@ -29,6 +29,8 @@
 		$scope.chartConfig.loading = false
 
 	$scope.quakes = Quake.query()
+	console.log $scope.quakes
+	$scope.recents = Recent.query()
 	console.log $scope.quakes
 
 
