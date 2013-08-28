@@ -26,10 +26,12 @@ class Quake
 	scope :mag9,  -> {where(:category => 9)}
 	scope :mag10, -> {where(:category => 10)}
 
-	scope :hour,  -> {where(time: (1.hour.ago..Time.now))}
-	scope :day,   -> {where(time: (24.hours.ago..Time.now))}
-	scope :week,  -> {where(time: (7.days.ago..Time.now))}
-	scope :month, -> {where(time: (1.month.ago..Time.now))}
+	scope :hour,        -> {where(time: (1.hour.ago..Time.now))}
+	scope :sixhour,     -> {where(time: (6.hours.ago..Time.now))}
+	scope :twelvehour,  -> {where(time: (12.hours.ago..Time.now))}
+	scope :day,         -> {where(time: (24.hours.ago..Time.now))}
+	scope :week,        -> {where(time: (7.days.ago..Time.now))}
+	scope :month,       -> {where(time: (1.month.ago..Time.now))}
 
 
 

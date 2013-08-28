@@ -18,6 +18,40 @@ node(:hour) do
   }
 end
 
+node(:sixhour) do
+  {
+   	total:@magnitudes.sixhour.count,
+   	magnitude_0:@magnitudes.sixhour.mag0.count,
+   	magnitude_1:@magnitudes.sixhour.mag1.count,
+   	magnitude_2:@magnitudes.sixhour.mag2.count,
+   	magnitude_3:@magnitudes.sixhour.mag3.count,
+   	magnitude_4:@magnitudes.sixhour.mag4.count,
+   	magnitude_5:@magnitudes.sixhour.mag5.count,
+   	magnitude_6:@magnitudes.sixhour.mag6.count,
+   	magnitude_7:@magnitudes.sixhour.mag7.count,
+   	magnitude_8:@magnitudes.sixhour.mag8.count,
+   	magnitude_9:@magnitudes.sixhour.mag9.count,
+   	magnitude_10:@magnitudes.sixhour.mag10.count
+  }
+end
+
+node(:twelvehour) do
+  {
+   	total:@magnitudes.twelvehour.count,
+   	magnitude_0:@magnitudes.twelvehour.mag0.count,
+   	magnitude_1:@magnitudes.twelvehour.mag1.count,
+   	magnitude_2:@magnitudes.twelvehour.mag2.count,
+   	magnitude_3:@magnitudes.twelvehour.mag3.count,
+   	magnitude_4:@magnitudes.twelvehour.mag4.count,
+   	magnitude_5:@magnitudes.twelvehour.mag5.count,
+   	magnitude_6:@magnitudes.twelvehour.mag6.count,
+   	magnitude_7:@magnitudes.twelvehour.mag7.count,
+   	magnitude_8:@magnitudes.twelvehour.mag8.count,
+   	magnitude_9:@magnitudes.twelvehour.mag9.count,
+   	magnitude_10:@magnitudes.twelvehour.mag10.count
+  }
+end
+
 node(:day) do
   {
    	total:@magnitudes.day.count,
