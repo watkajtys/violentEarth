@@ -99,8 +99,9 @@
 		options: {
 			colors: ['#2f7ed8', '#0d233a', '#8bbc21', '#910000', '#1aadce', '#492970','#f28f43', '#77a1e5', '#c42525', '#a6c96a'],
 			chart: {
-				type: 'column'
-				renderTo: 'container'
+				type: 'column',
+				renderTo: 'barchart',
+				marginTop: 10
 			},
 			credits: {
 				enabled: false
@@ -135,8 +136,9 @@
        	chart: {
            	type: 'pie',
            	colors: ['#4E8DB8', '#205C85', '#46DEC8', '#ED6B53', '#B83937', '#64E572', '#FF9655', '#FFF263', '#6AF9C4'],
-           	renderTo: 'container'
-           	marginBottom: 80
+           	renderTo: 'piechart',
+           	marginBottom: 80,
+           	marginTop: 0
          },
          credits: {
          	enabled: false
@@ -164,7 +166,7 @@
       ]
       # //Title configuration
       title: {
-         text: 'Earthquakes Magnitudes'
+         text: ''
       },
 
        # //Boolean to control showng loading status on chart
