@@ -35,64 +35,87 @@
 	$scope.recents = Recent.query()
 	console.log $scope.quakes
 
-	# $scope.tdmChartConfig = {
-	# 	options: {
-	# 		chart: {
-	# 			type: 'area'
-	# 			renderTo: 'container'
-	# 		},
-	# 		credits: {
-	# 			enabled: false
-	# 		},
-	# 		xAxis: {
-	# 			type: 'datetime',
-	# 		},
-	# 		yAxis:[{
-	# 			max: 10,
-	# 			minTickInterval: 1,
-	# 			maxTickInterval: 2,
-	# 			labels: {
-	# 				style: {
-	# 					color: '#89A54E'
-	# 				}
-	# 			},
-	# 			title: {
-	# 				text: 'Magnitude',
-	# 				style: {
-	# 					color: '#89A54E'
-	# 				}
-	# 			},
-	# 		}, {
-	# 			labels: {
-	# 				style: {
-	# 					color: '#89A54E'
-	# 				}
-	# 			},
-	# 			title: {
-	# 				text: 'Depth'
-	# 			}
-	# 			style: {
-	# 				color: '#4572A7'
-	# 			}
-	# 			opposite: true
-	# 		}]
-	# 		plotOptions: {
- #            series: {
- #               stacking: 'normal',
- #            }
- #         },
-	# 	},
-	# 	series: [{
-	# 		type: 'column',
-	# 		name: 'Magnitude',
-	# 		data: [1.5, 5.0, 6.8, 3.5]
-	# 	}, {
-	# 		type: 'column',
-	# 		name: 'Depth',
-	# 		data: [-119, -40.2, -155.3, -27]
-	# 	}],
-	# 	loading: false
-	# }
+	$scope.tdmChartConfig = {
+		options:{
+			chart: {
+				type: 'area',
+				renderTo: 'timedepthmagnitude'
+			},
+			credits: {
+				enabled: false
+			},
+			xAxis: {
+				type: 'datetime'
+			},
+			plotOptions: {
+				stacked: 'normal'
+			}
+			yAxis: [
+				{
+					min: -14,
+					tickInterval: 2,
+					title: {
+						text: 'Magnitude'
+					}
+				},
+				{
+					min: -140,
+					max: 0,
+					tickInterval: 20,
+					minTickInterval: 20,
+					name: 'Depth',
+					title: {
+						text: 'Depth'
+					},
+					tooltip: {
+                  valueSuffix: ' km'
+               },
+               marker: {
+                  enabled: true
+                },
+					labels: {
+                  style: {
+                     color: '#a74472'
+                  }
+                }
+					opposite: true,
+				}
+			]
+			tooltip: {
+         	shared: true
+	   	}
+		},
+		series: [{
+			yAxis: 0,
+			type: 'area',
+			name: 'Magnitude',
+			data: [
+				[Date('2013-08-28T05:01:54Z'), 1.5 ],
+				[Date("2013-08-28T05:12:18Z"), 1.3 ],
+				[Date("2013-08-28T05:05:29Z"), 1.1 ],
+				[Date("2013-08-28T05:01:54Z"), .5 ],
+				[Date("2013-08-28T04:59:25Z"), 2.8 ],
+				[Date("2013-08-28T04:56:42Z"), 4 ],
+				[Date("2013-08-28T04:51:49Z"), 2.1 ]
+			],
+		},
+		{
+			yAxis: 1,
+			type: 'area'
+			name: 'depth',
+			data: [
+				[Date('2013-08-28T05:01:54Z'), -121.5 ],
+				[Date("2013-08-28T05:12:18Z"), -90 ],
+				[Date("2013-08-28T05:05:29Z"), -5.0 ],
+				[Date("2013-08-28T05:01:54Z"), -15 ],
+				[Date("2013-08-28T04:59:25Z"), -10 ],
+				[Date("2013-08-28T04:56:42Z"), -0 ],
+				[Date("2013-08-28T04:51:49Z"), -5 ]
+			]
+		},
+		],
+		loading: false,
+	}
 
 
 	$scope.chartConfig2 = {
@@ -160,10 +183,9 @@
       # //Series object - a list of series using normal highcharts series options.
       series: [
       	type: 'pie',
-      	name: 'Number of Quakes'
-      	data: [
-      	]
-      ]
+      	name: 'Number of Quakes',
+      	data: []
+      ],
       # //Title configuration
       title: {
          text: ''
