@@ -1,6 +1,8 @@
 .container
 	.header
 		%button{:'ng-click' => "loadTimeSpan('hour')"} HOUR 
+		%button{:'ng-click' => "loadTimeSpan('sixhour')"} SIX HOUR
+		%button{:'ng-click' => "loadTimeSpan('twelvehour')"} TWELVE HOURS
 		%button{:'ng-click' => "loadTimeSpan('day')"} DAY
 		%button{:'ng-click' => "loadTimeSpan('week')"} WEEK
 		%button{:'ng-click' => "loadTimeSpan('month')"} MONTH
@@ -19,5 +21,6 @@
 		%h4 {{recent.time | date:'medium'}}
 		%h1 {{recent.magnitude}}
 		%h2 Location: {{recent.region}}
+		%h3 Depth: {{recent.depth}}
 		%hr
 	
