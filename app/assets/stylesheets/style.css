@@ -1,0 +1,53 @@
+tspan{
+	text-transform: capitalize;
+}
+
+.container {
+	width: 100%;
+}
+
+
+.top {
+	width: 100%;
+}
+
+.total {
+	width: 29%;
+	display: inline-block;
+}
+
+#piechart {
+	position: absolute;
+	top: 160px;
+	width: 29%;
+	display: inline-block;
+}
+
+#barchart {
+	position: absolute;
+	top: 160px;
+	width: 70%;
+	display: inline-block;
+}
+
+.total h1 {
+	font-size: 7em;
+	position: absolute;	
+	top: 15px;
+	padding-left: 15px;
+}
+
+.total h2 {
+	position: absolute;	
+	top: 135px;
+	padding-left: 15px;
+}
+
+.quake {
+	width: 100%;
+	position: relative;
+	top: 550px;
+	overflow: auto;
+}
+
+
