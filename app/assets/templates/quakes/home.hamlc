@@ -1,26 +1,23 @@
-.header
-	%button{:'ng-click' => "loadTimeSpan('hour')"} HOUR 
-	%button{:'ng-click' => "loadTimeSpan('day')"} DAY
-	%button{:'ng-click' => "loadTimeSpan('week')"} WEEK
-	%button{:'ng-click' => "loadTimeSpan('month')"} MONTH
+.container
+	.header
+		%button{:'ng-click' => "loadTimeSpan('hour')"} HOUR 
+		%button{:'ng-click' => "loadTimeSpan('day')"} DAY
+		%button{:'ng-click' => "loadTimeSpan('week')"} WEEK
+		%button{:'ng-click' => "loadTimeSpan('month')"} MONTH
 
-	{{selectedMagnitudes.mag0}}
+	.top
+		.total
+			%h1 {{selectedMagnitudes.total | number}}
+			%h2 EarthQuakes in the past {{timespan}}.
+			%highchart{:id => "piechart", :config => "chartConfig"}
+		%highchart{:id => "barchart", :config => "chartConfig2"}
+	
+	
+	%highchart{:id => "timedepthmagnitude", :config => "tdmChartConfig"}
 
-.total
-	%h1 {{selectedMagnitudes.total | number}} EarthQuakes in the past {{timespan}}.
-
-%highchart{:id => "chart1", :config => "chartConfig"}
-%highchart{:id => "chart2", :config => "chartConfig2"}
-
-
-.magnitude
-	%button{:'ng-click' => 'loadMagnitudes()'}load
-	%h1 {{magnitudes.total_count}}
-	%h1 {{magnitudes.mag1_count}}
-
-.quake{:'ng-repeat' => "recent in recents"}
-	%h4 {{recent.time | date:'medium'}}
-	%h1 {{recent.magnitude}}
-	%h2 Location: {{recent.region}}
-	%hr
+	.quake{:'ng-repeat' => "recent in recents"}
+		%h4 {{recent.time | date:'medium'}}
+		%h1 {{recent.magnitude}}
+		%h2 Location: {{recent.region}}
+		%hr
 	
