@@ -2,6 +2,10 @@ tspan{
 	text-transform: capitalize;
 }
 
+.body {
+	width: 960px;
+}
+
 .container {
 	width: 100%;
 }
@@ -19,15 +23,15 @@ tspan{
 #piechart {
 	position: absolute;
 	top: 160px;
-	width: 29%;
-	display: inline-block;
+	left: 5px;
+	width: 30%;
 }
 
 #barchart {
 	position: absolute;
 	top: 160px;
-	width: 70%;
-	display: inline-block;
+	right: 20px;
+	width: 65%;
 }
 
 .total h1 {
@@ -46,8 +50,29 @@ tspan{
 .quake {
 	width: 100%;
 	position: relative;
-	top: 550px;
+	top: 950px;
 	overflow: auto;
+	padding-right: 20px; 
+}
+
+.quake .date {
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+.quake .magnitude {
+	position: relative;
+	font-size: 3em;
+	display: inline-block;
+	width: 100px;
+	color: red;
+}
+
+.quake .data {
+	display: inline-block;
+	position: relative;
+	top: -3px;
+}
 }
 
 
