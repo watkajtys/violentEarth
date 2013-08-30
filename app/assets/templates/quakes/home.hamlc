@@ -11,16 +11,19 @@
 		.total
 			%h1 {{selectedMagnitudes.total | number}}
 			%h2 EarthQuakes in the past {{timespan}}.
-			%highchart{:id => "piechart", :config => "chartConfig"}
+		 %highchart{:id => "piechart", :config => "chartConfig"}
 		%highchart{:id => "barchart", :config => "chartConfig2"}
 	
 	
 	%highchart{:id => "timedepthmagnitude", :config => "tdmChartConfig"}
 
 	.quake{:'ng-repeat' => "recent in recents"}
-		%h4 {{recent.time | date:'medium'}}
-		%h1 {{recent.magnitude}}
-		%h2 Location: {{recent.region}}
-		%h3 Depth: {{recent.depth}}
+		.date 
+			%h4 {{recent.time | date:'medium'}}
+		.magnitude
+			%h1 {{recent.magnitude}}
+		.data
+			%h2 Location: {{recent.region}}
+			%h3 Depth: {{recent.depth}}
 		%hr
 	
